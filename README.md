@@ -1,0 +1,15 @@
+# Study Application - Design Patterns Study
+
+The project aims to practice the use of clean code principles and design patterns in an HR test application using Spring Boot and Java.
+
+Design Patterns Used:
+
+- DTO (Data Transfer Object): Used to transfer data between layers of the application.
+
+# (Pt-br) Aplicação de Teste e Estudo - Estudo de Design Patterns
+
+O projeto tem como objetivo praticar a utilização de principios de código limpo e design patterns em uma aplicação de RH usando Spring Boot e Java.
+
+Design Utilizados:
+
+- DTO (Data Transfer Object): Utilizado para transferir dados entre camadas da aplicação.
