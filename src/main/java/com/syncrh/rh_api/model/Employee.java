@@ -13,8 +13,8 @@ import java.time.LocalDate;
 @Table(name = "Employees")
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class Employee {
     @Id
     @Column(nullable = false, unique = true, length = 11)
@@ -42,4 +42,8 @@ public class Employee {
 
     @Column
     private LocalDate terminationDate;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private EmployeeType type;
 }

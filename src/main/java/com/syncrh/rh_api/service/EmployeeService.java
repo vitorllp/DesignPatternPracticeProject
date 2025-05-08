@@ -4,7 +4,6 @@ import com.syncrh.rh_api.dtos.EmployeeMapper;
 import com.syncrh.rh_api.exceptions.DuplicateCpfException;
 import com.syncrh.rh_api.model.Employee;
 import com.syncrh.rh_api.repository.EmployeeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

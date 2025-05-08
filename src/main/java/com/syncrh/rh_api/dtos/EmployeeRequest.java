@@ -1,9 +1,12 @@
 package com.syncrh.rh_api.dtos;
 
+import com.syncrh.rh_api.model.EmployeeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.time.LocalDate;
 
 @Getter
@@ -28,4 +31,8 @@ public class EmployeeRequest {
     private LocalDate hireDate;
 
     private LocalDate terminationDate;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private EmployeeType type;
 }

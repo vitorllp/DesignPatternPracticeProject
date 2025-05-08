@@ -15,7 +15,8 @@ public class EmployeeMapper {
                 request.getPosition(),
                 request.getSalary(),
                 request.getHireDate(),
-                request.getTerminationDate()
+                request.getTerminationDate(),
+                request.getType()
         );
     }
 
