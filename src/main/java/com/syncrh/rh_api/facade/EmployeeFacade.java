@@ -7,11 +7,11 @@ import com.syncrh.rh_api.model.EmployeeType;
 import java.time.LocalDate;
 
 public class EmployeeFacade {
-    public Employee registerCltEmployee(String cpf, String name, String cargo, float salary) {
+    public Employee registerCltEmployee(String cpf, String name, String position, float salary) {
         Employee clt = new EmployeeBuilder()
                 .cpf(cpf)
                 .name(name)
-                .position(cargo)
+                .position(position)
                 .salary(salary)
                 .hireDate(LocalDate.now())
                 .type(EmployeeType.CLT)
@@ -22,7 +22,7 @@ public class EmployeeFacade {
     }
 
     public void generateSimpleReport() {
-        System.out.println("=== Employees report ===");
+        System.out.println("=== Employee report ===");
         Employee clt = registerCltEmployee("12345678900", "Maria", "Developer", 5000f);
         System.out.println(clt);
     }

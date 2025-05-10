@@ -1,24 +1,23 @@
 package com.syncrh.rh_api.factory;
 
 import com.syncrh.rh_api.model.Employee;
+import com.syncrh.rh_api.model.EmployeeBuilder;
 import com.syncrh.rh_api.model.EmployeeType;
-import java.util.HashMap;
-import java.util.Map;
 
 public class EmployeeFactory {
-    private final Map<EmployeeType, EmployeeCreator> creators;
-
-    public EmployeeFactory() {
-        creators = new HashMap<>();
-        creators.put(EmployeeType.CLT, new CLTEmployeeCreator());
-        creators.put(EmployeeType.PJ, new PJEmployeeCreator());
-    }
-
     public Employee createEmployee(EmployeeType type) {
-        EmployeeCreator creator = creators.get(type);
-        if (creator == null) {
-            throw new IllegalArgumentException("Employee type not found: " + type);
-        }
-        return creator.createEmployee();
+        return switch (type) {
+            case CLT -> new EmployeeBuilder()
+                    .name("Default CLT")
+                    .type(EmployeeType.CLT)
+                    .salary(4000f)
+                    .build();
+            case PJ -> new EmployeeBuilder()
+                    .name("Default PJ")
+                    .type(EmployeeType.PJ)
+                    .salary(8000f)
+                    .build();
+            default -> throw new IllegalArgumentException("Invalid type");
+        };
     }
 }

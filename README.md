@@ -1,4 +1,5 @@
 # (EN) Practice and Study Application  - Design Patterns
+** This application doesn't have any purposes, it's only for study **
 
 The project aims to practice the use of clean code principles and design patterns in an HR test application using Spring Boot and Java.
 

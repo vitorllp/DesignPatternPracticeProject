@@ -1,12 +1,11 @@
 package com.syncrh.rh_api;
 
-import com.sun.tools.javac.Main;
-import com.syncrh.rh_api.dtos.EmployeeRequest;
 import com.syncrh.rh_api.facade.EmployeeFacade;
 import com.syncrh.rh_api.factory.EmployeeFactory;
 import com.syncrh.rh_api.model.Employee;
 import com.syncrh.rh_api.model.EmployeeBuilder;
 import com.syncrh.rh_api.model.EmployeeType;
+import com.syncrh.rh_api.strategy.SalaryStrategy;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -21,6 +20,10 @@ public class SyncRhApiApplication {
 		EmployeeFacade employeeFacade = new EmployeeFacade();
 		employeeFacade.registerCltEmployee("12345678900","Maria","Developer", 5000);
 		employeeFacade.generateSimpleReport();
+		//--------------- Strategy test
+		SalaryStrategy strategy = new SalaryStrategy.Clt();
+		float salary = strategy.calculateEmployeeSalary(5000);
+		System.out.println("New Salary:" + salary);
 		//--------------- Factory test
 		EmployeeFactory factory = new EmployeeFactory();
 		Employee pjEmployee = factory.createEmployee(EmployeeType.PJ);
@@ -32,7 +35,7 @@ public class SyncRhApiApplication {
 				.position("Developer")
 				.salary(5000f)
 				.hireDate(LocalDate.of(2023, 1, 10))
-				.terminationDate(null) // Não possui data de término
+				.terminationDate(null)
 				.type(EmployeeType.CLT)
 				.build();
 		System.out.println(cltEmployee);
