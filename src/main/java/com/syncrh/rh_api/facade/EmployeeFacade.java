@@ -1,0 +1,29 @@
+package com.syncrh.rh_api.facade;
+
+import com.syncrh.rh_api.model.Employee;
+import com.syncrh.rh_api.model.EmployeeBuilder;
+import com.syncrh.rh_api.model.EmployeeType;
+
+import java.time.LocalDate;
+
+public class EmployeeFacade {
+    public Employee registerCltEmployee(String cpf, String name, String cargo, float salary) {
+        Employee clt = new EmployeeBuilder()
+                .cpf(cpf)
+                .name(name)
+                .position(cargo)
+                .salary(salary)
+                .hireDate(LocalDate.now())
+                .type(EmployeeType.CLT)
+                .build();
+
+        System.out.println("Registered employee: " + clt);
+        return clt;
+    }
+
+    public void generateSimpleReport() {
+        System.out.println("=== Employees report ===");
+        Employee clt = registerCltEmployee("12345678900", "Maria", "Developer", 5000f);
+        System.out.println(clt);
+    }
+}

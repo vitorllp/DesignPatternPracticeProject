@@ -2,6 +2,7 @@ package com.syncrh.rh_api;
 
 import com.sun.tools.javac.Main;
 import com.syncrh.rh_api.dtos.EmployeeRequest;
+import com.syncrh.rh_api.facade.EmployeeFacade;
 import com.syncrh.rh_api.factory.EmployeeFactory;
 import com.syncrh.rh_api.model.Employee;
 import com.syncrh.rh_api.model.EmployeeBuilder;
@@ -16,13 +17,14 @@ public class SyncRhApiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SyncRhApiApplication.class, args);
 
+		// -------------- Facade test
+		EmployeeFacade employeeFacade = new EmployeeFacade();
+		employeeFacade.registerCltEmployee("12345678900","Maria","Developer", 5000);
+		employeeFacade.generateSimpleReport();
 		//--------------- Factory test
 		EmployeeFactory factory = new EmployeeFactory();
-
 		Employee pjEmployee = factory.createEmployee(EmployeeType.PJ);
-
 		System.out.println(pjEmployee);
-
 		//--------------- Builder test
 		Employee cltEmployee = new EmployeeBuilder()
 				.cpf("12345678900")
@@ -33,7 +35,6 @@ public class SyncRhApiApplication {
 				.terminationDate(null) // Não possui data de término
 				.type(EmployeeType.CLT)
 				.build();
-
 		System.out.println(cltEmployee);
 	}
 
