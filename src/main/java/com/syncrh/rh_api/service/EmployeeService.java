@@ -1,8 +1,8 @@
 package com.syncrh.rh_api.service;
 
-import com.syncrh.rh_api.dtos.EmployeeMapper;
 import com.syncrh.rh_api.exceptions.DuplicateCpfException;
 import com.syncrh.rh_api.model.Employee;
+import com.syncrh.rh_api.model.NullEmployee;
 import com.syncrh.rh_api.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
@@ -12,11 +12,9 @@ import java.util.List;
 public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
-    private final EmployeeMapper employeeMapper;
 
-    public EmployeeService(EmployeeRepository employeeRepository, EmployeeMapper employeeMapper) {
+    public EmployeeService(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
-        this.employeeMapper = employeeMapper;
     }
 
     public Employee createEmployee(Employee employee) {
@@ -24,6 +22,10 @@ public class EmployeeService {
             throw new DuplicateCpfException("CPF already exists.");
         }
         return employeeRepository.save(employee);
+    }
+
+    public Employee findByCpf(String cpf) {
+        return employeeRepository.findById(cpf).orElse(new NullEmployee());
     }
 
     public List<Employee> getAllEmployees() {

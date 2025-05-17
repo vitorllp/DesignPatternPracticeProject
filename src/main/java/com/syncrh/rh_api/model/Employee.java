@@ -44,4 +44,8 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private EmployeeType type;
+
+    public Employee(String name) {
+        this.name = name;
+    }
 }

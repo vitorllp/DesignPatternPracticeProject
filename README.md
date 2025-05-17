@@ -7,6 +7,7 @@ Design Patterns used:
 - DTO (Data Transfer Object): Used to transfer data between layers of the application.
 - Facade Design Pattern
 - Factory Design Pattern
+- Null object Design Pattern
 
 # (Pt-br) Aplicação de Prática e Estudo - Design Patterns
 
@@ -16,3 +17,4 @@ Design Patterns utilizados:
 - DTO (Data Transfer Object): Utilizado para transferir dados entre camadas da aplicação.
 - Facade Design Pattern
 - Factory Design Pattern
+- Null object Design Pattern

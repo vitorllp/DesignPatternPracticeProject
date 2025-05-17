@@ -4,6 +4,7 @@ import com.syncrh.rh_api.dtos.EmployeeMapper;
 import com.syncrh.rh_api.dtos.EmployeeRequest;
 import com.syncrh.rh_api.dtos.EmployeeResponse;
 import com.syncrh.rh_api.model.Employee;
+import com.syncrh.rh_api.model.NullEmployee;
 import com.syncrh.rh_api.service.EmployeeService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,15 @@ public class EmployeeController {
         Employee employee = employeeMapper.toEntity(request);
         Employee saved = employeeService.createEmployee(employee);
         return ResponseEntity.ok(employeeMapper.toResponse(saved));
+    }
+
+    @GetMapping("/{cpf}")
+    public ResponseEntity<EmployeeResponse> findByCpf(@PathVariable String cpf) {
+        Employee employee = employeeService.findByCpf(cpf);
+        if (employee instanceof NullEmployee) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(employeeMapper.toResponse(employee));
     }
 
     @GetMapping
