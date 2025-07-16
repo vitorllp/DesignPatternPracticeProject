@@ -6,6 +6,10 @@ import com.syncrh.rh_api.model.Employee;
 import com.syncrh.rh_api.model.EmployeeBuilder;
 import com.syncrh.rh_api.model.EmployeeType;
 import com.syncrh.rh_api.model.NullEmployee;
+import com.syncrh.rh_api.report.AdvancedReport;
+import com.syncrh.rh_api.report.ReportAdapter;
+import com.syncrh.rh_api.report.ReportGenerator;
+import com.syncrh.rh_api.report.ReportGeneratorImpl;
 import com.syncrh.rh_api.strategy.SalaryStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -13,6 +17,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @SpringBootApplication
 public class SyncRhApiApplication {
@@ -49,5 +56,14 @@ public class SyncRhApiApplication {
 		// -------------- Null object Design Pattern
 		Employee example = employeeFacade.findEmployeeByCpf("00000000000");
 		System.out.println(example.getName());
+
+		// -------------- Adapter Design Pattern Test
+		List<Employee> employees = new ArrayList<>();
+		ReportGenerator simpleReport = new ReportGeneratorImpl();
+		System.out.println(simpleReport.generateReport(employees));
+
+		AdvancedReport advancedReport = new AdvancedReport();
+		ReportGenerator adapted = new ReportAdapter(advancedReport);
+		System.out.println(adapted.generateReport(employees));
 	}
 }
