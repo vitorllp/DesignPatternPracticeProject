@@ -8,6 +8,7 @@ Design Patterns used:
 - Facade Design Pattern
 - Factory Design Pattern
 - Null object Design Pattern
+- Adapter Design Pattern
 
 # (Pt-br) Aplicação de Prática e Estudo - Design Patterns
 
@@ -18,3 +19,4 @@ Design Patterns utilizados:
 - Facade Design Pattern
 - Factory Design Pattern
 - Null object Design Pattern
+- Adapter Design Pattern
